@@ -9,7 +9,7 @@ MOODLE_CORE_LANG_EN = MOODLE_CODE_ROOT / "lang" / "en"
 INCLUDE_PLUGINS = True
 
 # Where to write intermediate CSV and final packs
-WORKDIR = Path(r"C:\moodle-lang-maker")
+WORKDIR = Path(r"C:\Users\karaw\Desktop\moodle-lang-maker\moodle-lang-maker")
 DATA_DIR = WORKDIR / "data"
 OUTPUT_DIR = WORKDIR / "output"
 LOG_DIR = WORKDIR / "logs"
