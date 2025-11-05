@@ -2,7 +2,7 @@
 from pathlib import Path
 
 # Point these at your Windows Moodle checkout
-MOODLE_CODE_ROOT = Path(r"C:\moodle")           # eg C:\moodle
+MOODLE_CODE_ROOT = Path(r"C:\camsmoodle\moodle")
 MOODLE_CORE_LANG_EN = MOODLE_CODE_ROOT / "lang" / "en"
 
 # If you want to include plugins, set this to the Moodle root folder
