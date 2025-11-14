@@ -1,5 +1,7 @@
 # Moodle Language Pack Maker
 
+> Written by Codex and provided strictly “as is.” This is a what-you-see-is-what-you-get project with no promises of support, maintenance, or follow-up assistance.
+
 Moodle Language Pack Maker automates the creation of bespoke Moodle language
 variants (for example, “Klingon English”). It extracts English source strings
 from your Moodle checkout, translates them in bulk with the OpenAI Batch API,
@@ -45,8 +47,8 @@ Intermediate artefacts and final packs live under the work directory defined in
   machine.
 * An OpenAI account with Batch API access and the `OPENAI_API_KEY` environment
   variable configured.
-* Optional: Azure OpenAI can be wired in manually, but the provided scripts use
-  the public OpenAI client directly.
+* Optional: you can adapt the scripts to call alternative OpenAI-compatible
+  providers, but they ship configured for the public OpenAI client.
 
 Install Python dependencies inside a virtual environment:
 
@@ -228,9 +230,17 @@ Pull requests are welcome! Useful contributions include:
 * Extending component detection in `component_from_path` for additional Moodle
   plugin types.
 * Enhancing placeholder validation to cover more edge cases.
-* Adding optional Azure OpenAI support or alternative translation providers.
+* Adding optional support for alternative translation providers.
 * Writing automated tests for the CSV lifecycle.
 
 Before submitting, run the scripts you touched and ensure the README remains up
 to date.
+
+---
+
+## Disclaimer
+
+This toolkit is intentionally minimal. Use it at your own risk, adapt it to your
+own infrastructure, and don’t expect help if something breaks. You are the
+support team.
 
