@@ -15,18 +15,21 @@ OUTPUT_DIR = WORKDIR / "output"
 LOG_DIR = WORKDIR / "logs"
 
 # Output language variant code
-VARIANT_CODE = "en_skyrim"
-VARIANT_NAME = "Skyrim English"
+VARIANT_CODE = "en_Klingon"
+VARIANT_NAME = "Klingon English"
 PARENT_LANGUAGE = "en"
 
 # Translation target description. You can change this to any language or style
-TARGET_STYLE = "Skyrim English"
-
+TARGET_STYLE = "Klingon English"
 # Batch size for API calls
 BATCH_SIZE = 150
 
 # Model name for OpenAI Responses API
 OPENAI_MODEL = "gpt-4o-mini"
+
+# Batch API settings
+BATCH_COMPLETION_WINDOW = "24h"   # How long OpenAI can take to process the batch
+BATCH_POLL_SECONDS = 600         # How often to poll the batch status (10 minutes)
 
 # Optional: limit to these folders while testing
 INCLUDE_ONLY_REL_PATHS = []  # e.g. ["mod/forum/lang/en/forum.php"]
