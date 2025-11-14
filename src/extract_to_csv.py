@@ -6,7 +6,14 @@ from src.common import (
     RE_SQ, RE_DQ, unescape_php, sha_row, CSV_PATH
 )
 
+
 def main():
+    """Extract English Moodle strings into a CSV workbook.
+
+    The heavy lifting—file discovery, PHP string parsing, and CSV writing—is
+    intentionally straightforward so it is easy to tweak when adapting the
+    workflow to new components or custom plugins.
+    """
     files = discover_lang_files()
     rows = []
     for php in files:
@@ -16,14 +23,15 @@ def main():
         relfile = rel_from_root(php)
         component = component_from_path(php)
 
-        # single quoted
+        # Capture single-quoted string definitions of the form $string['key'].
         for m in RE_SQ.finditer(data):
             key = m.group("k")
             text = unescape_php(m.group("t"), "'")
             rows.append([component, relfile, php.name, key, text, "", "pending",
                          sha_row(component, relfile, key, text)])
 
-        # double quoted
+        # Capture double-quoted definitions ($string["key"]). Moodle does not
+        # mind either quoting style, so we support both to avoid missing strings.
         for m in RE_DQ.finditer(data):
             key = m.group("k")
             text = unescape_php(m.group("t"), '"')
