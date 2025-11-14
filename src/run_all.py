@@ -1,24 +1,21 @@
 # -*- coding: utf-8 -*-
-# run_all.py — orchestrates the three stages
+# Orchestrates the three stages using -m so imports resolve at project root.
 
-import sys
 import subprocess
+import sys
 from pathlib import Path
 
-# Ensure the project root is on sys.path so config.py can be imported
 ROOT = Path(__file__).resolve().parents[1]
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
 
-from config import WORKDIR  # now import works
-
-def run(mod):
-    print(f"=== {mod} ===")
-    subprocess.check_call([sys.executable, str((WORKDIR / 'src' / mod).resolve())])
+def run(modname: str):
+    print(f"=== {modname} ===")
+    # Run as module from the project root so `from config import ...` works
+    subprocess.run([sys.executable, "-m", modname], cwd=str(ROOT), check=True)
 
 if __name__ == "__main__":
-    run("extract_to_csv.py")
-    run("translate_csv.py")
-    run("build_pack.py")
+    run("src.extract_to_csv")
+    run("src.translate_csv")
+    run("src.build_pack")
     print("All done.")
+
 
